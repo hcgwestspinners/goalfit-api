@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+from flask_cors import CORS  # ✅ Add this
 import requests
 from bs4 import BeautifulSoup
 import os
@@ -10,9 +11,8 @@ import time
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)  # 👈 This allows requests from any origin
+CORS(app)  # ✅ This allows requests from any origin
 
-a
 # Configuration
 REQUEST_TIMEOUT = 10  # seconds
 MAX_RETRIES = 3
@@ -89,5 +89,4 @@ def get_leaderboard():
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port, debug=False) 
-
+    app.run(host="0.0.0.0", port=port, debug=False)
