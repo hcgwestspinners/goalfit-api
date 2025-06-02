@@ -10,8 +10,9 @@ import time
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app)  # 👈 This allows requests from any origin
 
-
+a
 # Configuration
 REQUEST_TIMEOUT = 10  # seconds
 MAX_RETRIES = 3
