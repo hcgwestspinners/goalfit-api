@@ -11,9 +11,6 @@ load_dotenv()
 
 app = Flask(__name__)
 
-@app.route("/")
-def home():
-    return "🎯 GoalFit API is live!"
 
 # Configuration
 REQUEST_TIMEOUT = 10  # seconds
