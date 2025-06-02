@@ -1,17 +1,16 @@
 from flask import Flask, jsonify
-from flask_cors import CORS  # ✅ Add this
+from flask_cors import CORS  # ✅ CORS import added
 import requests
 from bs4 import BeautifulSoup
 import os
 from dotenv import load_dotenv
 from functools import wraps
-import time
 
 # Load environment variables
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)  # ✅ This allows requests from any origin
+CORS(app)  # ✅ Enables cross-origin requests from anywhere (for WordPress etc.)
 
 # Configuration
 REQUEST_TIMEOUT = 10  # seconds
@@ -58,7 +57,7 @@ def get_leaderboard():
 
     login_url = "https://www.app.goals.fit/api/v11/sign_in"
     payload = {"user": {"email": email, "password": password}}
-    session = requests.Session()
+    session = get_session()
     r = session.post(login_url, json=payload)
 
     if r.status_code != 200:
